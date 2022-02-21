@@ -1,3 +1,4 @@
+//Actions performed when "Enter Student Details" button is pressed.
 document.querySelector(".btn").addEventListener("click", () => {
   document.getElementById("briefing").style.display = "none";
   document.getElementById("name").style.transitionDuration = "1s";
@@ -7,20 +8,35 @@ document.querySelector(".btn").addEventListener("click", () => {
   }, 1000);
 });
 
+//Actions performed when "submit" button is pressed.
 document.getElementById("submit").addEventListener("click", () => {
+ 
+  //first name.
   let fname = document.getElementById("fname").value;
   fname = fname.charAt(0).toUpperCase() + fname.slice(1);
-
+  
+  //last name.
   let lname = document.getElementById("lname").value;
   lname = lname.charAt(0).toUpperCase() + lname.slice(1);
-
+  
+  //registration number.
   let reg = document.getElementById("reg").value.toUpperCase();
+  
+  //semester
   let sem = document.getElementById("inputSemester").value;
-
+  
+  //Stores the sum of marks*credit of each subject.
   let score = 0;
+  
+  //contains all the marks entered.
   let marksarray = document.getElementsByClassName("marks");
+  
+  //contains all the credits entered.
   let creditsarray = document.getElementsByClassName("credit");
+  
+  //stores the sum of credits entered.
   let totalCredits = 0;
+  
   for (let i = 0; i < marksarray.length; i++) {
     if (creditsarray[i].value != "Credit Point") {
       score =
@@ -29,8 +45,12 @@ document.getElementById("submit").addEventListener("click", () => {
       totalCredits += Number(creditsarray[i].value);
     }
   }
+  
+  //Stores final result.
   let result = 0;
   result = score / totalCredits ? (score / totalCredits).toFixed(2) : 0;
+  
+  //final logic to print the output.
   if (result != 0) {
     let suffix = "th";
     if (sem == 1) suffix = "st";
