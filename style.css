@@ -119,6 +119,11 @@ footer {
   #collegeName {
     font-size: 2rem;
   }
+  .content {
+    display: none;
+    position: absolute;
+    top: 170px;
+  }
   #tag {
     font-size: 1rem;
     font-family: "Akaya Telivigala", cursive;
