@@ -24,6 +24,7 @@ body {
 
   /* background-image: -webkit-linear-gradient(60deg, #f3a0de 20%,rgb(235, 173, 103) 30%, #714add 60%); */
   font-family: "Bree Serif", serif;
+  background-attachment:fixed;
 }
 
 a {
