@@ -2,7 +2,7 @@
 document.querySelector(".btn").addEventListener("click", () => {
   document.getElementById("briefing").style.display = "none";
   document.getElementById("name").style.transitionDuration = "1s";
-  document.getElementById("name").style.transform = "translateY(-230px)";
+  document.getElementById("name").style.transform = "translateY(-120px)";
   setTimeout(() => {
     document.querySelector(".content").style.display = "inherit";
   }, 1000);
