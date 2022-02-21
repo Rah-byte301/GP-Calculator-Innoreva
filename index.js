@@ -28,6 +28,9 @@ document.getElementById("submit").addEventListener("click", () => {
   //Stores the sum of marks*credit of each subject.
   let score = 0;
   
+  //A temporary variable to check if marks in any field is out of bound or not
+  let f=0;
+  
   //contains all the marks entered.
   let marksarray = document.getElementsByClassName("marks");
   
@@ -39,10 +42,16 @@ document.getElementById("submit").addEventListener("click", () => {
   
   for (let i = 0; i < marksarray.length; i++) {
     if (creditsarray[i].value != "Credit Point") {
-      score =
-        score +
-        (Number(marksarray[i].value) / 10 + 1) * Number(creditsarray[i].value);
-      totalCredits += Number(creditsarray[i].value);
+     if (
+        Number(marksarray[i].value) <= 100 &&
+        Number(marksarray[i].value) >= 0
+      ) {
+        score =
+          score +
+          (Number(marksarray[i].value) / 10 + 1) *
+            Number(creditsarray[i].value);
+        totalCredits += Number(creditsarray[i].value);
+      } else f = 1;
     }
   }
   
@@ -51,7 +60,7 @@ document.getElementById("submit").addEventListener("click", () => {
   result = score / totalCredits ? (score / totalCredits).toFixed(2) : 0;
   
   //final logic to print the output.
-  if (result != 0) {
+  if (result != 0&&f==0) {
     let suffix = "th";
     if (sem == 1) suffix = "st";
     else if (sem == 2) suffix = "nd";
@@ -70,6 +79,12 @@ document.getElementById("submit").addEventListener("click", () => {
       ).textContent = `${fname} ${lname}, ${reg} has got ${result} GPA in ${sem}${suffix} semester`;
       document.querySelector("#GradePointResult h3").textContent = remarks;
     }
+  } else if (f == 1) {
+    document.querySelector("#GradePointResult h2").textContent = "";
+    document.querySelector("#GradePointResult h3").textContent = "";
+    alert(
+      "Marks entered in some subjects are beyond the range of 0 to 100. Rectify and try again."
+    );
   } else {
     document.querySelector(
       "#GradePointResult h2"
